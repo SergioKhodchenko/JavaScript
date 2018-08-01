@@ -38,20 +38,20 @@ function Cashier (name, productDatabase) {
 
 
 
-const Bob = new Cashier("Bob", products);
-Bob.getCustomerMoney(400);
-console.log(Bob.customerMoney);
-const totalPrice = Bob.countTotalPrice(order);
+const bobby = new Cashier("Bobby", products);
+bobby.getCustomerMoney(400);
+console.log(bobby.customerMoney);
+const totalPrice = bobby.countTotalPrice(order);
 console.log(totalPrice);
-const change = Bob.countChange();
+const change = bobby.countChange();
 console.log(change);
 
 if (change !== null) {
-  Bob.onSuccess(change); 
+  bobby.onSuccess(change); 
 } else {
-  Bob.onError(); 
+  bobby.onError(); 
 }
 
-Bob.reset();
+bobby.reset();
 
-console.log(Bob.customerMoney);
+console.log(bobby.customerMoney);
