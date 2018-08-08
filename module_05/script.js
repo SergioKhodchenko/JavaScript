@@ -91,39 +91,36 @@ const users = [
     age: 39
   }
 ];
-
 /**
  * Получить массив имен (поле name) всех пользователей
  */
-const getAllNames = arr => arr.reduce((accum, obj) => [...accum, obj.name], []);
+const getAllNames = arr => arr.map(users => users.name);
 console.log(getAllNames(users));
-
 /**
  * Получить массив объектов пользователей по цвету глаз (поле eyeColor)
  */
 const getUsersByEyeColor = (arr, color) =>
-  arr.filter(element => element.eyeColor === color);
+  arr.filter(users => users.eyeColor === color);
 console.log(getUsersByEyeColor(users, "blue")); // [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
-
 /**
  * Получить массив имен пользователей по полу (поле gender)
  */
 const getUsersByGender = (arr, gender) =>
   arr
-    .filter(element => element.gender === gender)
-    .reduce((accum, obj) => [...accum, obj.name], []);
+    .filter(users => users.gender === gender)
+    .map(users => users.name);
 console.log(getUsersByGender(users, "male")); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
 
 /**
  * Получить массив только неактивных пользователей (поле isActive)
  */
-const getInactiveUsers = arr => arr.filter(element => !element.isActive);
+const getInactiveUsers = arr => arr.filter(users => !users.isActive);
 console.log(getInactiveUsers(users)); // [объект Moore Hensley, объект Ross Vazquez, объект Blackburn Dotson]
 
 /**
  * Получить пользоваля (не массив) по email (поле email, он уникальный)
  */
-const getUserByEmail = (arr, email) => arr.find(obj => obj.email === email);
+const getUserByEmail = (arr, email) => arr.find(users => users.email === email);
 console.log(getUserByEmail(users, "shereeanthony@kog.com")); // {объект пользователя Sheree Anthony}
 console.log(getUserByEmail(users, "elmahead@omatom.com")); // {объект пользователя Elma Head}
 
@@ -131,7 +128,7 @@ console.log(getUserByEmail(users, "elmahead@omatom.com")); // {объект по
  * Получить массив пользователей попадающих в возрастную категорию от min до max лет (поле age)
  */
 const getUsersWithAge = (arr, min, max) =>
-  arr.filter(element => element.age > min && element.age < max);
+  arr.filter(users => users.age > min && users.age < max);
 console.log(getUsersWithAge(users, 20, 30)); // [объект Ross Vazquez, объект Elma Head, объект Carey Barr]
 console.log(getUsersWithAge(users, 30, 40));
 // [объект Moore Hensley, объект Sharlene Bush, объект Blackburn Dotson, объект Sheree Anthony]
@@ -140,7 +137,7 @@ console.log(getUsersWithAge(users, 30, 40));
  * Получить общую сумму баланса (поле balance) всех пользователей
  */
 const getTotalBalance = arr =>
-  arr.reduce((accum, obj) => (accum += obj.balance), 0);
+  arr.reduce((accum, users) => (accum += users.balance), 0);
 console.log(getTotalBalance(users)); // 20916
 
 /**
@@ -148,8 +145,8 @@ console.log(getTotalBalance(users)); // 20916
  */
 const getUsersByFriend = (arr, name) =>
   arr
-    .filter(obj => obj.friends.includes(name))
-    .reduce((accum, obj) => [...accum, obj.name], []);
+    .filter(users => users.friends.includes(name))
+    .map(users => users.name);
 
 console.log(getUsersByFriend(users, "Briana Decker")); // [ 'Sharlene Bush', 'Sheree Anthony' ]
 console.log(getUsersByFriend(users, "Goldie Gentry")); // [ 'Elma Head', 'Sheree Anthony' ]

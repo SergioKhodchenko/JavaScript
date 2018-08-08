@@ -91,31 +91,36 @@ const users = [
     age: 39
   }
 ];
-
 /**
  * Получить массив всех скиллов всех пользователей (поле skills), при этом не должно быть
  * повторяющихся скиллов и они должны быть отсортированы в алфавитном порядке
  */
+// const getAllSkills = arr => arr
+// .reduce((accum, obj) => {
+
+//   if (accum.includes(...obj.skills)) {
+//     return accum;
+//   }
+//   return [...accum, ...obj.skills];
+// }, [])
+// .sort();
 const getAllSkills = arr =>
   arr
-    .reduce((accum, obj) => [...accum, ...obj.skills], []) // или писать accum.concat(obj.skills) ?
-    .reduce((accum, element) => accum.includes(element) ? accum : [...accum, element], [])
+    .reduce((accum, users) => [...accum, ...users.skills], []) // или писать accum.concat(users.skills) ?
+    .reduce((accum, users) => accum.includes(users) ? accum : [...accum, users], [])
     .sort();
 
 console.log(getAllSkills(users));
 // [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
 
-
-
 /**
  * Массив имен (поле name) людей, отсортированных в зависимости от количества их друзей (поле friends)
  */
-const sortByFriendsCount = (a, b) => a.friends.length - b.friends.length; // написал вот такую сортировочную функцию
-
 const getUserNamesSortedByFriendsCount = arr =>
   arr
-    .sort(sortByFriendsCount)
-    .reduce((accum, obj) => [...accum, obj.name], []);
+    .sort(sortedByFriendsCount)
+    .map(users => users.name);
+const sortedByFriendsCount = (a, b) => a.friends.length - b.friends.length;
 
 console.log(getUserNamesSortedByFriendsCount(users));
 
