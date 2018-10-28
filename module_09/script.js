@@ -51,6 +51,7 @@ const startBtn = document.querySelector('.js-start');
 const lapBtn = document.querySelector('.js-take-lap');
 const resetBtn = document.querySelector('.js-reset');
 const clockFace = document.querySelector('.js-time');
+let list;
 
 // наш объект таймер
 const timer = {
@@ -87,6 +88,7 @@ const timer = {
         const ul = document.querySelector('.js-laps');
 
         const li = document.createElement('li');
+        list = ul;
         li.textContent = this.lapsCounter[this.lapsCounter.length -1];
         li.style.width = '500px';
         li.style.fontSize = '50px';
@@ -117,6 +119,7 @@ function handleResetBtnClick(){
     timer.reset();
     startBtn.textContent = 'Start';
     startBtn.classList.remove('active');
+    list.textContent = '';
     setActiveBtn(this);
 }
 
