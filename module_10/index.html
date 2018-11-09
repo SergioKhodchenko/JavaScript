@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700|Roboto:300,400,700" rel="stylesheet"> 
+    <title>Домашка Сережи 10</title>
+</head>
+<body>
+    <div class="container">
+    <div class="inner-container get">
+        <p class="inner-container__title">Here you can get all users</p>
+        <button class="mdc-btn get-all" type="submit">get all users</button>
+    </div>    
+    <div class="inner-container add">
+        <p class="inner-container__title">Here you can add new user</p>    
+        <form class="create-form form">
+          <input type="text" name="name" id="name" placeholder="Enter user name">
+          <input type="number" name="age" id="age" placeholder="Enter user age">
+          <button class="mdc-btn add-user" type="submit">add user</button>
+        </form>
+    </div>
+    <div class="inner-container delete">
+        <p class="inner-container__title">Here you can find and delete user by ID</p>
+        <form class="search-form form">      
+          <input type="text" name="id" id="id" placeholder="Enter user ID">
+          <button class="mdc-btn find-user" type="submit">find user</button>
+          <button class="mdc-btn delete-user" type="submit">delete user</button>
+        </form>
+    </div>
+    <div class="inner-container update">
+        <p class="inner-container__title">Here you can update user</p>
+        <form class="create-form form">
+          <input type="text" name="id" id="update-id" placeholder="Enter user ID">
+          <input type="text" name="name" id="update-name" placeholder="User new name">
+          <input type="number" name="age" id="update-age" placeholder="User new age">
+          <button class="mdc-btn update-user" type="submit">update user</button>
+        </form>
+    </div>    
+    </div>
+    <table hidden>
+        <thead>
+          <tr>
+            <th>User name</th>
+            <th>ID</th>
+            <th>Age</th>
+            <th><button class="mdc-btn clear-table" type="submit">clear table</button></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+      <script src="script.js"></script>
+</body>
+</html>
